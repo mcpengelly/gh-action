@@ -5,13 +5,12 @@ workflow "run script when PR updated" {
 
 action "run danger" {
   uses = "./run-script/"
+  secrets = ["GITHUB_TOKEN"]
 }
 
 action "Assignee to reviewer" {
   uses = "pullreminders/assignee-to-reviewer-action@master"
-  secrets = [
-    "GITHUB_TOKEN"
-  ]
+  secrets = ["GITHUB_TOKEN"]
 }
 
 action "branch cleanup" {
