@@ -1,6 +1,10 @@
-workflow "Assign reviewers based on assignees" {
+workflow "run script when PR updated" {
   on = "pull_request"
-  resolves = ["Assignee to reviewer"]
+  resolves = ["run danger", "Assignee to reviewer", "branch cleanup"]
+}
+
+action "run danger" {
+  uses = "./run-script/"
 }
 
 action "Assignee to reviewer" {
@@ -8,4 +12,9 @@ action "Assignee to reviewer" {
   secrets = [
     "GITHUB_TOKEN"
   ]
+}
+
+action "branch cleanup" {
+  uses = "jessfraz/branch-cleanup-action@master"
+  secrets = ["GITHUB_TOKEN"]
 }
