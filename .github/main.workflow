@@ -4,7 +4,7 @@ workflow "run script when PR updated" {
 }
 
 action "run danger" {
-  uses = "./run-script/"
+  uses = "./run-danger/"
   secrets = ["GITHUB_TOKEN"]
 }
 
