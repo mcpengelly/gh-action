@@ -1,0 +1,25 @@
+workflow "run script when PR updated" {
+  on = "pull_request"
+  resolves = ["Danger JS"]//, "Assignee to reviewer", "branch cleanup"]
+}
+
+action "run danger" {
+  uses = "./run-danger/"
+  secrets = ["GITHUB_TOKEN"]
+}
+
+action "Danger JS" {
+  uses = "danger/danger-js@master"
+  secrets = ["GITHUB_TOKEN"]
+  args = "--dangerfile ./dangerfile.js"
+}
+
+action "Assignee to reviewer" {
+  uses = "pullreminders/assignee-to-reviewer-action@master"
+  secrets = ["GITHUB_TOKEN"]
+}
+
+action "branch cleanup" {
+  uses = "jessfraz/branch-cleanup-action@master"
+  secrets = ["GITHUB_TOKEN"]
+}
