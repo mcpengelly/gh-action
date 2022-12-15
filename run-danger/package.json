@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "babel": "^6.23.0",
-    "danger": "^7.1.4"
+    "danger": "^11.2.0"
   }
 }
